@@ -3,7 +3,7 @@
 # Fork from https://registry.hub.docker.com/u/osrg/ryu/dockerfile/
 # and https://registry.hub.docker.com/u/hsrnetwork/ryu/dockerfile/
 
-FROM ubuntu:14.04
+FROM ubuntu:15.04
 
 MAINTAINER John Lin <linton.tw@gmail.com>
 
@@ -27,4 +27,4 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 WORKDIR /opt/ryu
 
 # Show ryu-manager version
-CMD ["./bin/ryu-manager", "--version"]
+# CMD ["./bin/ryu-manager", "--version"]
