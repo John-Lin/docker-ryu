@@ -16,6 +16,8 @@ RUN apt-get update && \
     mv /opt/ryu-master /opt/ryu && \
     cd /opt/ryu && python ./setup.py install
 
+ADD myapp /opt/ryu/ryu/app
+
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     /opt/ryu.zip
