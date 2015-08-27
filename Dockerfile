@@ -12,8 +12,12 @@ RUN apt-get update && \
     apt-get install -qy --no-install-recommends python-setuptools python-pip \
         python-eventlet python-lxml python-msgpack unzip wget && \
     wget -O /opt/ryu.zip "http://github.com/osrg/ryu/archive/master.zip" --no-check-certificate && \
+    wget -O /opt/ryu_dal.zip "https://github.com/TakeshiTseng/ryu-dynamic-loader/archive/master.zip" --no-check-certificate && \
     unzip -q /opt/ryu.zip -d /opt && \
+    unzip -q /opt/ryu_dal.zip -d /opt && \
     mv /opt/ryu-master /opt/ryu && \
+    cp /opt/ryu-dynamic-loader-master/dal_lib.py /opt/ryu/ryu/app && \
+    cp /opt/ryu-dynamic-loader-master/dal_plugin.py /opt/ryu/ryu/app && \
     cd /opt/ryu && python ./setup.py install
 
 ADD myapp /opt/ryu/ryu/app
