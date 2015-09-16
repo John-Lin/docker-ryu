@@ -22,7 +22,7 @@ RUN apt-get update && \
 
 
 # Node.js 4.x Installation
-RUN curl -sL https://deb.nodesource.com/setup_4.x | -E bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
     apt-get install -y nodejs && \
     wget -O /opt/remote-ryu.zip "https://github.com/John-Lin/remote-ryu/archive/master.zip" --no-check-certificate && \
     unzip -q /opt/remote-ryu.zip -d /opt && \
