@@ -7,21 +7,26 @@ FROM ubuntu:15.04
 
 MAINTAINER John Lin <linton.tw@gmail.com>
 
-# Download Ryu source code
+# Download Ryu source code and install
 RUN apt-get update && \
     apt-get install -qy --no-install-recommends python-setuptools python-pip \
-        python-eventlet python-lxml python-msgpack python-networkx unzip wget nodejs && \
+        python-eventlet python-lxml python-msgpack python-networkx unzip wget curl && \
     wget -O /opt/ryu.zip "http://github.com/osrg/ryu/archive/master.zip" --no-check-certificate && \
-    wget -O /opt/remote-ryu.zip "https://github.com/John-Lin/remote-ryu/archive/master.zip" --no-check-certificate && \
     # wget -O /opt/ryu_dal.zip "https://github.com/TakeshiTseng/ryu-dynamic-loader/archive/master.zip" --no-check-certificate && \
     unzip -q /opt/ryu.zip -d /opt && \
-    unzip -q /opt/remote-ryu.zip -d /opt && \
     # unzip -q /opt/ryu_dal.zip -d /opt && \
     mv /opt/ryu-master /opt/ryu && \
-    mv /opt/remote-ryu-master /opt/ryu && \
     # cp /opt/ryu-dynamic-loader-master/dal_lib.py /opt/ryu/ryu/app && \
     # cp /opt/ryu-dynamic-loader-master/dal_plugin.py /opt/ryu/ryu/app && \
-    cd /opt/ryu && python ./setup.py install && \
+    cd /opt/ryu && python ./setup.py install
+
+
+# Node.js 4.x Installation
+RUN curl -sL https://deb.nodesource.com/setup_4.x | -E bash - && \
+    apt-get install -y nodejs && \
+    wget -O /opt/remote-ryu.zip "https://github.com/John-Lin/remote-ryu/archive/master.zip" --no-check-certificate && \
+    unzip -q /opt/remote-ryu.zip -d /opt && \
+    mv /opt/remote-ryu-master /opt/ryu && \
     cd /opt/ryu/remote-ryu-master && npm install
 
 ADD myapp /opt/ryu/ryu/app
