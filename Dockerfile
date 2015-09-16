@@ -18,7 +18,8 @@ RUN apt-get update && \
     mv /opt/ryu-master /opt/ryu && \
     # cp /opt/ryu-dynamic-loader-master/dal_lib.py /opt/ryu/ryu/app && \
     # cp /opt/ryu-dynamic-loader-master/dal_plugin.py /opt/ryu/ryu/app && \
-    cd /opt/ryu && python ./setup.py install
+    cd /opt/ryu && python ./setup.py install && \
+    pip install route webob oslo.config
 
 
 # Node.js 4.x Installation
