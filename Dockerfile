@@ -1,6 +1,6 @@
 # Ryu SDN Framework
 
-FROM ubuntu:14.04.03
+FROM ubuntu:14.04.3
 
 MAINTAINER John Lin <linton.tw@gmail.com>
 
@@ -17,7 +17,7 @@ RUN apt-get update && \
 # Download vCPE hub
 RUN wget -O /opt/vcpe-hub.zip "https://github.com/vcpe-io/vcpe-hub/archive/master.zip" --no-check-certificate && \
     unzip -q /opt/vcpe-hub.zip -d /opt && \
-    mv /opt/vcpe-hub-master /opt/ryu 
+    mv /opt/vcpe-hub-master /opt/ryu
 
 # Node.js 4.x Installation
 RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
