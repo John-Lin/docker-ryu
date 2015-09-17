@@ -14,6 +14,10 @@ RUN apt-get update && \
     cd /opt/ryu && python ./setup.py install && \
     pip install -U routes webob oslo.config networkx
 
+# Download vCPE hub
+RUN wget -O /opt/vcpe-hub.zip "https://github.com/vcpe-io/vcpe-hub/archive/master.zip" --no-check-certificate && \
+    unzip -q /opt/vcpe-hub.zip -d /opt && \
+    mv /opt/vcpe-hub-master /opt/ryu
 
 # Node.js 4.x Installation
 RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
@@ -27,7 +31,7 @@ ADD myapp /opt/ryu/ryu/app
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    /opt/ryu.zip /opt/remote-ryu.zip
+    /opt/ryu.zip /opt/remote-ryu.zip /opt/vcpe-hub.zip
 
 # Define working directory.
 WORKDIR /opt/ryu
