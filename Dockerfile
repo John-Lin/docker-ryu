@@ -1,6 +1,6 @@
 # Ryu SDN Framework
 
-FROM ubuntu:15.04
+FROM ubuntu:14.04
 
 MAINTAINER John Lin <linton.tw@gmail.com>
 
@@ -12,7 +12,7 @@ RUN apt-get update && \
     unzip -q /opt/ryu.zip -d /opt && \
     mv /opt/ryu-master /opt/ryu && \
     cd /opt/ryu && python ./setup.py install && \
-    pip install -U routes webob oslo.config networkx
+    pip install -U routes webob oslo.config networkx netaddr six pbr
 
 # Download vCPE hub
 RUN wget -O /opt/vcpe-hub.zip "https://github.com/vcpe-io/vcpe-hub/archive/master.zip" --no-check-certificate && \
