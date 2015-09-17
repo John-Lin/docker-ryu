@@ -17,7 +17,8 @@ RUN apt-get update && \
 # Download vCPE hub
 RUN wget -O /opt/vcpe-hub.zip "https://github.com/vcpe-io/vcpe-hub/archive/master.zip" --no-check-certificate && \
     unzip -q /opt/vcpe-hub.zip -d /opt && \
-    mv /opt/vcpe-hub-master /opt/ryu
+    mv /opt/vcpe-hub-master /opt/ryu && \
+    rm /var/lib/apt/lists/* -vf
 
 # Node.js 4.x Installation
 RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
