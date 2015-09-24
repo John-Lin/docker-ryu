@@ -25,7 +25,7 @@ RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
     wget -O /opt/remote-ryu.zip "https://github.com/John-Lin/remote-ryu/archive/master.zip" --no-check-certificate && \
     unzip -q /opt/remote-ryu.zip -d /opt && \
     mv /opt/remote-ryu-master /opt/ryu && \
-    cd /opt/ryu/remote-ryu-master && npm install && npm install pm2 -g
+    cd /opt/ryu/remote-ryu-master && npm install
 
 ADD myapp /opt/ryu/ryu/app
 
@@ -39,4 +39,4 @@ WORKDIR /opt/ryu
 # Show ryu-manager version
 # CMD ["./bin/ryu-manager", "--version"]
 
-CMD ["pm2", "./remote-ryu-master/remote-ryu.js"]
+CMD ["node", "./remote-ryu-master/remote-ryu.js"]
