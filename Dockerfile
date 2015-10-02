@@ -6,7 +6,7 @@ MAINTAINER John Lin <linton.tw@gmail.com>
 
 # Download Ryu source code and install
 RUN apt-get update && \
-    apt-get install -qy --no-install-recommends python-setuptools python-pip \
+    apt-get install -qy --no-install-recommends build-essential python-dev-all python-setuptools python-pip \
         python-eventlet python-lxml python-msgpack python-networkx unzip wget curl && \
     wget -O /opt/ryu.zip "http://github.com/osrg/ryu/archive/master.zip" --no-check-certificate && \
     unzip -q /opt/ryu.zip -d /opt && \
