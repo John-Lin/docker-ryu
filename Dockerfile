@@ -11,8 +11,8 @@ RUN apt-get update && \
     wget -O /opt/ryu.zip "http://github.com/osrg/ryu/archive/master.zip" --no-check-certificate && \
     unzip -q /opt/ryu.zip -d /opt && \
     mv /opt/ryu-master /opt/ryu && \
-    cd /opt/ryu && python ./setup.py install && \
-    pip install -U routes webob oslo.config networkx netaddr six pbr
+    pip install -U routes webob oslo.config networkx netaddr six pbr eventlet && \
+    cd /opt/ryu && python ./setup.py install
 
 # Download vCPE hub
 RUN wget -O /opt/vcpe-hub.zip "https://github.com/vcpe-io/vcpe-hub/archive/master.zip" --no-check-certificate && \
