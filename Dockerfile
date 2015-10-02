@@ -6,12 +6,12 @@ MAINTAINER John Lin <linton.tw@gmail.com>
 
 # Download Ryu source code and install
 RUN apt-get update && \
-    apt-get install -qy --no-install-recommends build-essential python-dev python-setuptools python-pip \
+    apt-get install -qy --no-install-recommends python-setuptools python-pip \
         python-eventlet python-lxml python-msgpack python-networkx unzip wget curl && \
     wget -O /opt/ryu.zip "http://github.com/osrg/ryu/archive/master.zip" --no-check-certificate && \
     unzip -q /opt/ryu.zip -d /opt && \
     mv /opt/ryu-master /opt/ryu && \
-    pip install -U routes webob oslo.config networkx netaddr six pbr eventlet && \
+    pip install -U routes webob oslo.config networkx netaddr six pbr && \
     cd /opt/ryu && python ./setup.py install
 
 # Download vCPE hub
