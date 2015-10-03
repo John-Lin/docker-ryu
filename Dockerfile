@@ -13,7 +13,7 @@ RUN apt-get update && \
     unzip -q /opt/ryu.zip -d /opt && \
     mv /opt/ryu-master /opt/ryu && \
     pip install -U pip && \
-    # pip install -U routes networkx webob oslo.config netaddr six pbr && \
+    pip install -U routes networkx webob oslo.config && \
     cd /opt/ryu && python ./setup.py install
 
 # Download vCPE hub
