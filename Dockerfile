@@ -1,18 +1,19 @@
 # Ryu SDN Framework
 
-FROM ubuntu:14.04.3
+# FROM ubuntu:14.04.3
+FROM ubuntu:15.04
 
 MAINTAINER John Lin <linton.tw@gmail.com>
 
 # Download Ryu source code and install
 RUN apt-get update && \
     apt-get install -qy --no-install-recommends python-setuptools python-pip \
-      python-lxml python-msgpack unzip wget curl && \
+        python-eventlet python-lxml python-msgpack unzip wget curl && \
     wget -O /opt/ryu.zip "http://github.com/osrg/ryu/archive/master.zip" --no-check-certificate && \
     unzip -q /opt/ryu.zip -d /opt && \
     mv /opt/ryu-master /opt/ryu && \
     pip install -U pip && \
-    pip install -U eventlet lxml msgpack routes networkx webob oslo.config netaddr six pbr && \
+    # pip install -U routes networkx webob oslo.config netaddr six pbr && \
     cd /opt/ryu && python ./setup.py install
 
 # Download vCPE hub
