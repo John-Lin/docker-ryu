@@ -1,6 +1,6 @@
 # Ryu SDN Framework
 
-FROM ubuntu:15.04
+FROM ubuntu:15.10
 # FROM ubuntu:14.04.3
 
 MAINTAINER John Lin <linton.tw@gmail.com>
@@ -14,7 +14,8 @@ RUN apt-get update && \
     mv /opt/ryu-master /opt/ryu && \
     pip install -U pip && \
     pip install -U routes webob oslo.config && \
-    cd /opt/ryu && python ./setup.py install
+    cd /opt/ryu && pip install -r tools/pip-requires && \
+    python ./setup.py install
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
