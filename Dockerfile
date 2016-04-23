@@ -24,7 +24,7 @@ RUN wget -O /opt/ryu.zip "http://github.com/osrg/ryu/archive/master.zip" --no-ch
     python setup.py install
 
 # Clean up APT when done.
-RUN apt-get clean &&  /opt/ryu.zip
+RUN apt-get clean && rm -rf /opt/ryu.zip
 
 # Define working directory.
 WORKDIR /opt/ryu
