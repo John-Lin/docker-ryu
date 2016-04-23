@@ -6,7 +6,7 @@ FROM ubuntu:16.04
 MAINTAINER John Lin <linton.tw@gmail.com>
 
 # Download Ryu source code and install
-RUN apt-get update && apt-get install -qy --no-install-recommends
+RUN apt-get update && apt-get install -y --no-install-recommends \
                         python-setuptools
                         python-pip \
                         python-eventlet \
@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -qy --no-install-recommends
                         unzip \
                         wget \
                         curl \
-                   && rm -rf /var/lib/apt/lists/*
+                  && rm -rf /var/lib/apt/lists/*
 
 RUN wget -O /opt/ryu.zip "http://github.com/osrg/ryu/archive/master.zip" --no-check-certificate && \
     unzip -q /opt/ryu.zip -d /opt && \
