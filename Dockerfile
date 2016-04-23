@@ -7,7 +7,7 @@ MAINTAINER John Lin <linton.tw@gmail.com>
 
 # Download Ryu source code and install
 RUN apt-get update && apt-get install -y --no-install-recommends \
-                        python-setuptools
+                        python-setuptools \
                         python-pip \
                         python-eventlet \
                         python-lxml \
