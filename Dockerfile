@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
                         python-msgpack \
                         unzip \
                         wget \
-                        curl \
                   && rm -rf /var/lib/apt/lists/*
 
 RUN wget -O /opt/ryu.zip "http://github.com/osrg/ryu/archive/master.zip" --no-check-certificate && \
